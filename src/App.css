@@ -1,38 +1,94 @@
-.App {
+/* General Styling */
+body {
+  background-color: #FDF6E3; /* Soft cream */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear and legible */
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Title Card */
+.title-card {
+  background-color: #800000; /* Deep red */
+  color: gold;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif; /* Stylish yet readable */
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title-card h1 {
+  margin-top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.quiz-info {
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  color: white;
+}
+
+/* Question Cards */
+.question-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #FFCCCB; /* Light red */
+  color: #4D2600; /* Dark brown */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear and legible */
+  padding: 15px;
+  margin: 10px 5%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  gap: 15px; /* Spacing between flex items */
+
+}
+
+/* Text Input Field and Submit Button */
+.input-wrapper {
+  /* background-color: #FFF8E7; */
+  border: 1px solid gold;
+  width: 90%; /* Width of the input field */
+}
+
+.input-field {
+  border: 1px solid gold;
+  padding: 10px;
+  margin-bottom: 10px; /* Space between input field and button */
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #FFA500; /* Vibrant orange */
   color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Bold and clear */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  width: 90%; /* Width of the button */
 }
 
-.App-link {
-  color: #61dafb;
+.submit-button:hover {
+  background-color: #E69500; /* Darker orange */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Answer Div */
+.answer-div {
+  background-color: #008080; /* Teal */
+  color: #ff8c00; /* Cream */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clear and legible */
+  padding: 15px;
+  width: 90%; /* Width of the button */
+  margin: 10px 5%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .title-card, .question-card, .answer-div {
+      margin: 10px 3%;
   }
 }
