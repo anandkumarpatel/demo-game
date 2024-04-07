@@ -29,6 +29,9 @@ const QACard: React.FC<Props> = ({ question, answer, initRes, onFinish }) => {
         onChange={(e) => {
           setIsWrong(false)
           setAnswerText(e.target.value)
+          if (e.target.value === answer) {
+            onFinish(answer)
+          }
         }}
         InputProps={{
           inputProps: {
@@ -58,7 +61,7 @@ const QACard: React.FC<Props> = ({ question, answer, initRes, onFinish }) => {
           }
         }}
       >
-        try it
+        Guess
       </button>
     </>
   )
