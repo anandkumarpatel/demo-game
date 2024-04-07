@@ -53,7 +53,6 @@ const QACard: React.FC<Props> = ({ question, answer, initRes, onFinish }) => {
       <button
         className='submit-button'
         onClick={() => {
-          console.log('submitting', currentInput, answer)
           if (currentInput === answer) {
             onFinish(answer)
           } else {

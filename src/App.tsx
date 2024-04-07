@@ -37,7 +37,6 @@ function App() {
             question={question}
             answer={answer}
             onFinish={(a) => {
-              console.log('onFinish', a, question, answers, answers[question] === a)
               setAnswers({
                 ...answers,
                 [question]: a,
