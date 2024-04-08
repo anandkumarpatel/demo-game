@@ -1,12 +1,40 @@
 import { Box, useTheme } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import IntoCard from './IntroCard'
 import QACard from './QACard'
 import FinalCard from './FinalCard'
+import socketIOClient from 'socket.io-client'
 
+let socket: any = null
 function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
+  useEffect(() => {
+    socket = socketIOClient(`${window.location.hostname}:4001`)
+    // socket = socketIOClient(`http://localhost:4001`)
+    socket.on('completed', (e: Record<string, string>) => {
+      if (e.from !== socket.id) {
+        return setAnswers({
+          ...answers,
+          ...e,
+        })
+      }
+    })
+
+    socket.on('init', (e: Record<string, string>) => {
+      console.log('init', e)
+      if (e) {
+        return setAnswers({
+          ...answers,
+          ...e,
+        })
+      }
+    })
+    return () => {
+      socket.disconnect()
+    }
+  }, [])
+
   const theme = useTheme()
   const questions = [
     { question: 'At which company has Akhil spent most of his professional life?', answer: 'vmWare' },
@@ -25,7 +53,7 @@ function App() {
     { question: 'Akhil has 3 friends with the same name. What is their name? Hint: they are all Ismaili', answer: 'Ali' },
     { question: "What is Tina's profession?", answer: 'lawYer' },
   ]
-
+  console.log('answers', answers)
   const isSolved = Object.keys(answers).length === questions.length
   return (
     <Box sx={{ width: '100vw', height: '100vh', overflow: 'scroll' }}>
@@ -36,11 +64,20 @@ function App() {
             key={question}
             question={question}
             answer={answer}
+            initRes={answers[question]}
             onFinish={(a) => {
+              console.log('onFinish')
               setAnswers({
                 ...answers,
                 [question]: a,
               })
+              console.log('emitting')
+              socket.emit('complete', {
+                from: socket.id,
+                question,
+                answer: a,
+              })
+              console.log('emitted')
             }}
           />
         )

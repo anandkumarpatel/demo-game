@@ -1,6 +1,4 @@
 import { FunctionComponent } from 'react'
-import { BasicPaper } from './styles'
-import { Typography } from '@mui/material'
 
 const FinalCard: FunctionComponent = () => {
   return (
