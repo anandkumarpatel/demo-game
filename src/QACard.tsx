@@ -13,7 +13,6 @@ const QACard: React.FC<Props> = ({ question, answer, initRes = '', onFinish }) =
   const [currentInput, setAnswerText] = React.useState(initRes)
   const [isWrong, setIsWrong] = React.useState(false)
   const isSolved = currentInput.toLowerCase() === answer.toLowerCase() || initRes.toLowerCase() === answer.toLowerCase()
-  console.log('isSolved', isSolved, currentInput, answer, initRes)
   let helperText = ''
   if (isWrong) {
     helperText = 'Nope, try again'

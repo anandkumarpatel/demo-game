@@ -25,7 +25,13 @@ async function main() {
     Object.keys(state).forEach((key) => {
       delete state[key]
     })
-    res.send('ok')
+    res.send('reset')
+  })
+
+  app.get('/solve', (req, res) => {
+    state.solved = true
+    io.to('all').emit('solve')
+    res.send('solved')
   })
 
   app.use(express.static('build'))
@@ -61,7 +67,7 @@ async function main() {
       console.log('click', event)
       const state = get()
       save('click', (state.click || 0) + 1)
-      io.to('all').emit('completed', state)
+      io.to('all').emit('completed', get())
     })
 
     socket.on('disconnect', () => {
