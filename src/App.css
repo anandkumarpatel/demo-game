@@ -1,12 +1,10 @@
 :root {
-  --color-primary-1: #008ddc;
-  --color-primary-2: #82d8ff;
-  --color-complementary: #dc4d00;
-  --color-analogous-1: #00dcbb;
+  --color-primary-1: #012677; /* header back */
+  --color-primary-2: #00b4fc; /* question back */
+  --color-complementary: #1785FF;
+  --color-analogous-1: #17f9ff; /* header text color */
   --color-analogous-2: #0021dc;
-  --color-analogous-3: #007b4c;
-  --color-triadic-1: #4d00dc;
-  --color-triadic-2: #dc008f;
+  --color-analogous-3: #001449;
 }
 
 code {
