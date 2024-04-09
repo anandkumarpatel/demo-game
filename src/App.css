@@ -1,10 +1,9 @@
 :root {
-  --color-primary-1: #012677; /* header back */
-  --color-primary-2: #00b4fc; /* question back */
-  --color-complementary: #1785FF;
-  --color-analogous-1: #17f9ff; /* header text color */
-  --color-analogous-2: #0021dc;
-  --color-analogous-3: #001449;
+  --color-primary-1: #012677; /* header background */
+  --color-primary-2: #00b4fc; /* question background */
+  --color-complementary: #1785FF; /* submit button */
+  --color-analogous-1: #17f9ff; /* header text color and answer background */
+  --color-analogous-3: #001449; /* question text color */
 }
 
 code {
