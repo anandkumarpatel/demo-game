@@ -1,4 +1,4 @@
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 import './App.css'
 import IntoCard from './IntroCard'
@@ -35,7 +35,6 @@ function App() {
     }
   }, [])
 
-  const theme = useTheme()
   const questions = [
     { question: 'At which company has Akhil spent most of his professional life?', answer: 'vmWare' },
     { question: "You should wish a very Happy Birthday today to which of Akhil's friends?", answer: 'madHav' },

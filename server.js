@@ -7,7 +7,6 @@ const port = process.env.PORT || 4001
 
 const app = express()
 const state = {}
-
 async function main() {
   function save(question, answer) {
     state[question] = answer
@@ -55,6 +54,13 @@ async function main() {
       console.log('complete', event)
       save(event.question, event.answer)
       const state = get()
+      io.to('all').emit('completed', state)
+    })
+
+    socket.on('click', (event) => {
+      console.log('click', event)
+      const state = get()
+      save('click', (state.click || 0) + 1)
       io.to('all').emit('completed', state)
     })
 
