@@ -22,6 +22,13 @@ async function main() {
     return next()
   })
 
+  app.get('/reset', (req, res) => {
+    Object.keys(state).forEach((key) => {
+      delete state[key]
+    })
+    res.send('ok')
+  })
+
   app.use(express.static('build'))
 
   const server = http.createServer(app)
