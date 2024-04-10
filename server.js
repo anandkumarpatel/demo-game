@@ -28,6 +28,10 @@ async function main() {
     res.send('reset')
   })
 
+  app.get('/health', (req, res) => {
+    res.send('ok')
+  })
+
   app.get('/solve', (req, res) => {
     state.solved = true
     io.to('all').emit('solve')
