@@ -3,6 +3,6 @@ ADD package.json /app/
 ADD package-lock.json /app/
 WORKDIR /app
 RUN npm install --omit=dev
-ADD . /app/
-RUN npm run build
+COPY build /app/build
+COPY server.js /app
 CMD ["npm", "run", "api"]

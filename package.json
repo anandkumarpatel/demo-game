@@ -4,15 +4,17 @@
   "private": true,
   "dependencies": {
     "@mui/material": "^5.15.1",
-    "@types/node": "^16.18.68",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite": "^5.2.8",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
     "gh-pages": "^6.1.1"
@@ -23,16 +25,10 @@
     "docker:build": "docker build -t demo .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "start": "vite",
+    "build": "tsc && vite build",
+    "deploy:server": "npm run build && docker build -t demo:v1 . && (docker kill demo && docker rm demo) || docker run -d -p 4001:4001 --name demo demo:v1",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [
