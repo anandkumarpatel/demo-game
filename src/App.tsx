@@ -26,13 +26,18 @@ const questions = [
   { question: 'Akhil has 3 friends with the same name. What is their name? Hint: they are all Ismaili', answer: 'Ali' },
   { question: "What is Tina's profession?", answer: 'lawYer' },
 ]
+const isLocal = window.location.hostname.includes('localhost')
+const port = isLocal ? '4001' : '443'
+const backendUrl = `${window.location.protocol}//${window.location.hostname}:${port}`
 
+console.log(backendUrl)
 function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [clickDone, setClickDone] = useState(false)
   const [clickEnabled, setClickEnabled] = useState(false)
   useEffect(() => {
-    const manager = new Manager(`${window.location.hostname}:4001`)
+    // const manager = new Manager(`${window.location.hostname}:4001`)
+    const manager = new Manager(backendUrl)
     socket = manager.socket('/') // main namespace
     manager.on('reconnect', () => {
       console.log('reconnected')

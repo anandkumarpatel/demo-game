@@ -27,7 +27,8 @@
     "deploy": "gh-pages -d build",
     "start": "vite",
     "build": "tsc && vite build",
-    "deploy:server": "npm run build && docker build -t demo:v1 . && (docker kill demo && docker rm demo) || docker run -d -p 4001:4001 --name demo demo:v1",
+    "deploy:server": "npm run build && docker build -t demo:v1 . && npm run deploy:clean; docker run -d -p 4001:4001 --name demo demo:v1",
+    "deploy:clean": "docker kill demo && docker rm demo",
     "preview": "vite preview"
   },
   "browserslist": {
