@@ -10,27 +10,29 @@ import QACard from './QACard'
 
 let socket: any = null
 const questions = [
-  { question: 'At which company has Akhil spent most of his professional life?', answer: 'vmWare' },
-  { question: "You should wish a very Happy Birthday today to which of Akhil's friends?", answer: 'madHav' },
-  { question: "Find any of Akhil's friends or family members who went to Georgia Tech and ask them to complete this phrase: To hell with…?", answer: 'gEorgia' },
-  { question: "Akhil's friend Anand developed this devious but brilliant game! Anand started his career at which popular AI chip company?", answer: 'Nvidia' },
-  { question: "Akhil's cousins come in all ages! Who is the eldest cousin here today? Hint: Ask for Titoo", answer: 'rIshi' },
-  { question: `Now go find the youngest cousin! What's her name?`, answer: 'Shivani' },
-  { question: 'Priya, Vishu, Nikhil, and Akhil once missed a train trying to get to which PNW city?', answer: 'portlaNd' },
-  { question: 'Gunan was a recent contestant on which popular TV game show?', answer: 'jEopardy' },
-  { question: "What is Amu's real name?", answer: 'miHir' },
-  { question: 'What is the first name of the comedian that Neha and Akhil watched on their first date?', answer: 'hAsan' },
-  { question: 'Where in Montana did Akhil coach soccer?', answer: 'misSoula' },
-  { question: 'Lesly, Akhil, and Amu once camped outside to save money while attending the world cup in which country?', answer: 'Brazil' },
-  { question: "Which 'corner' Colorado city is Maddie from?", answer: 'Durango' },
-  { question: 'Akhil has 3 friends with the same name. What is their name? Hint: they are all Ismaili', answer: 'Ali' },
-  { question: "What is Tina's profession?", answer: 'lawYer' },
+  { question: "what's my favorite indian restaurant in san francisco?", answer: 'Mela' },
+  { question: 'in the video on my youtube channel, event-driven architecture can promote rapid what?', answer: 'prototYping' },
+  { question: 'find alejandro. ask him what country he is from.', answer: 'argentina' },
+  { question: 'my second instagram post contains glasses made by what company?', answer: 'snaPchat' },
+  { question: 'find jorge and adk him what he is known for.', answer: 'laugH' },
+  { question: "the two precious stones on the sides of nancy's wedding ring refer to houses in school?", answer: 'hOgwarts' },
+  { question: 'find my elementary school friend and get his last name.', answer: 'kesayaN' },
+  { question: 'find anton. ask him what country he is from.', answer: 'ukrainE' },
+  { question: 'find suhag and purvi and ask them what town they are from.', answer: 'mcrae' },
+  { question: 'what is my dj name?', answer: 'fAze' },
+  { question: "what is the name of my family's pet bird?", answer: 'Ramu' },
+  { question: 'what color shirt is my snapchat avatar wearing?', answer: 'whitE' },
+  { question: 'find bob. what is his real name?', answer: 'Ashish' },
+  { question: 'in what country was my facebook profile picture?', answer: 'ireland' },
+  { question: 'i got a flat tire on the way to what meetup? (check my twitter)', answer: 'doCker' },
+  { question: 'what fraternity was i in?', answer: 'aiO' },
+  { question: 'my mixes on soundcloud are measured in?', answer: 'Degrees' },
+  { question: 'i like sharing knowledge via fun what? (check my linkedin)', answer: 'newslEtters' },
 ]
 const isLocal = window.location.hostname.includes('localhost')
 const port = isLocal ? '4001' : '443'
 const backendUrl = `${window.location.protocol}//${window.location.hostname}:${port}`
 
-console.log(backendUrl)
 function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [clickDone, setClickDone] = useState(false)
@@ -110,18 +112,15 @@ function App() {
             answer={answer}
             initRes={answers[question]}
             onFinish={(a) => {
-              console.log('onFinish')
               setAnswers({
                 ...answers,
                 [question]: a,
               })
-              console.log('emitting')
               socket.emit('complete', {
                 from: socket.id,
                 question,
                 answer: a,
               })
-              console.log('emitted')
             }}
           />
         )
