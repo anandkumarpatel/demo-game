@@ -10,24 +10,11 @@ import QACard from './QACard'
 
 let socket: any = null
 const questions = [
-  { question: "what's my favorite indian restaurant in san francisco?", answer: 'Mela' },
-  { question: 'in the video on my youtube channel, event-driven architecture can promote rapid what?', answer: 'prototYping' },
-  { question: 'find alejandro. ask him what country he is from.', answer: 'argentina' },
-  { question: 'my second instagram post contains glasses made by what company?', answer: 'snaPchat' },
-  { question: 'find jorge and adk him what he is known for.', answer: 'laugH' },
-  { question: "the two precious stones on the sides of nancy's wedding ring refer to houses in school?", answer: 'hOgwarts' },
-  { question: 'find my elementary school friend and get his last name.', answer: 'kesayaN' },
-  { question: 'find anton. ask him what country he is from.', answer: 'ukrainE' },
-  { question: 'find suhag and purvi and ask them what town they are from.', answer: 'mcrae' },
-  { question: 'what is my dj name?', answer: 'fAze' },
-  { question: "what is the name of my family's pet bird?", answer: 'Ramu' },
-  { question: 'what color shirt is my snapchat avatar wearing?', answer: 'whitE' },
-  { question: 'find bob. what is his real name?', answer: 'Ashish' },
-  { question: 'in what country was my facebook profile picture?', answer: 'ireland' },
-  { question: 'i got a flat tire on the way to what meetup? (check my twitter)', answer: 'doCker' },
-  { question: 'what fraternity was i in?', answer: 'aiO' },
-  { question: 'my mixes on soundcloud are measured in?', answer: 'Degrees' },
-  { question: 'i like sharing knowledge via fun what? (check my linkedin)', answer: 'newslEtters' },
+  { question: "what's is Readme.io mascots name?", answer: 'Owlbert' },
+  { question: 'From which city did Owlbert originate?', answer: 'prototYping' },
+  { question: 'The outlawing of what caused Owlbert to move to Silicon Valley', answer: 'internet' },
+  { question: 'On which pages does Owlbert spend his days jumping?', answer: 'ReadMe' },
+  { question: 'What does the W stand for in Owlberts role as CWO stand for?', answer: 'Whimsy' },
 ]
 const isLocal = window.location.hostname.includes('localhost')
 const port = isLocal ? '4001' : '443'

@@ -51,7 +51,7 @@ async function main() {
   })
 
   io.on('connection', (socket) => {
-    console.log(socket.id, 'New client connected')
+    console.log(socket.id, 'New client connected. Total connections:', io.sockets.sockets.size)
 
     const data = get()
     console.log('sending init', data)
@@ -74,7 +74,7 @@ async function main() {
     })
 
     socket.on('disconnect', () => {
-      console.log(socket.id, 'Client disconnected')
+      console.log(socket.id, 'Client disconnected. Total connections:', io.sockets.sockets.size)
     })
   })
 
