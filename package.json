@@ -21,7 +21,7 @@
   },
   "scripts": {
     "api": "node server.js",
-    "serve": "npm run build && node server.js",
+    "serve": "npm run build && PORT=8888 node server.js",
     "docker:build": "docker build -t demo .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

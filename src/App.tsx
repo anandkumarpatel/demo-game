@@ -10,8 +10,8 @@ import QACard from './QACard'
 
 let socket: any = null
 const questions = [
-  { question: "what's is Readme.io mascots name?", answer: 'Owlbert' },
-  { question: 'From which city did Owlbert originate?', answer: 'prototYping' },
+  { question: "What's is Readme.io mascots name?", answer: 'Owlbert' },
+  { question: 'From which city did Owlbert originate?', answer: 'Owlbany' },
   { question: 'The outlawing of what caused Owlbert to move to Silicon Valley', answer: 'internet' },
   { question: 'On which pages does Owlbert spend his days jumping?', answer: 'ReadMe' },
   { question: 'What does the W stand for in Owlberts role as CWO stand for?', answer: 'Whimsy' },
