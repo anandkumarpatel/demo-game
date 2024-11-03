@@ -1,17 +1,10 @@
 :root {
-  --color-primary-1: #012677; /* header background */
-  --color-primary-2: #00b4fc; /* question background */
-  --color-complementary: #1785FF; /* submit button */
-  --color-analogous-1: #17f9ff; /* header text color and answer background */
-  --color-analogous-3: #001449; /* question text color */
-
   --primary-bg: #E8D7F1;
   --secondary-bg: #F2E8F9;
   --primary-text: #3E206D;
   --accent-gold: #D4AF37;
   --accent-blue: #B2C5EB;
   --white: #FFFFFF;
-
 }
 
 code {
@@ -77,16 +70,13 @@ body {
 
 /* Text Input Field and Submit Button */
 .input-wrapper {
-  /* background-color: #FFF8E7; */
-  border: 1px solid var(--color-complementary);
   width: 90%; /* Width of the input field */
 }
 
 .input-field {
-  border: 1px solid var(--color-complementary);
   padding: 10px;
   margin-bottom: 10px; /* Space between input field and button */
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .submit-button {
@@ -94,7 +84,7 @@ body {
   color: var(--primary-text);
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, border 0.3s ease;

@@ -3,6 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './App.css'
+import Admin from './Admin'
 
 const theme = createTheme({
   // palette: {
@@ -15,10 +16,9 @@ const theme = createTheme({
   // },
 })
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const isAdmin = window.location.pathname.includes('admin850')
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <ThemeProvider theme={theme}>{isAdmin ? <Admin /> : <App />}</ThemeProvider>
   </React.StrictMode>
 )

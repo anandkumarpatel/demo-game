@@ -24,6 +24,7 @@ async function main() {
     Object.keys(state).forEach((key) => {
       delete state[key]
     })
+    io.to('all').emit('reset')
     res.send('reset')
   })
 
@@ -38,6 +39,7 @@ async function main() {
   })
 
   app.use(express.static('build'))
+  app.use('/admin850', express.static('build'))
 
   const server = http.createServer(app)
 

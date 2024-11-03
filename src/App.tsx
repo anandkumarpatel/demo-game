@@ -88,6 +88,7 @@ function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [clickDone, setClickDone] = useState(false)
   const [clickEnabled, setClickEnabled] = useState(false)
+  console.log('answers', answers)
   useEffect(() => {
     // const manager = new Manager(`${window.location.hostname}:4001`)
     const manager = new Manager(backendUrl)
@@ -104,6 +105,7 @@ function App() {
       console.log('reconnect_failed')
       setClickEnabled(false)
     })
+
     function solve() {
       setClickDone(true)
       setAnswers(
@@ -113,15 +115,13 @@ function App() {
             return p
           },
           {
-            click: 100000,
+            click: 1000000,
           } as Record<string, any>
         )
       )
     }
-    socket.on('solve', solve)
-
-    socket.on('completed', (e: Record<string, string>) => {
-      // setClickEnabled(true)
+    const completed = (e: Record<string, string>) => {
+      setClickEnabled(true)
       console.log('completed', e)
 
       if (e.from !== socket.id) {
@@ -133,11 +133,15 @@ function App() {
           ...e,
         })
       }
-    })
+    }
 
-    socket.on('init', (e: Record<string, string>) => {
+    const reset = () => {
+      window.location.reload()
+    }
+
+    const init = (e: Record<string, string>) => {
       if (e.solved) return solve()
-      // setClickEnabled(true)
+      setClickEnabled(true)
       console.log('init', e)
       if (e) {
         return setAnswers({
@@ -145,7 +149,13 @@ function App() {
           ...e,
         })
       }
-    })
+    }
+
+    socket.on('solve', solve)
+    socket.on('completed', completed)
+    socket.on('reset', reset)
+    socket.on('init', init)
+
     return () => {
       socket.disconnect()
     }
@@ -170,7 +180,7 @@ function App() {
             key={question}
             question={question}
             answer={changeCase(answer)}
-            initRes={answers[question]}
+            initRes={answers[question] || ''}
             onFinish={(a) => {
               setAnswers({
                 ...answers,
