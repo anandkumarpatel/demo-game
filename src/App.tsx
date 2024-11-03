@@ -121,7 +121,7 @@ function App() {
     socket.on('solve', solve)
 
     socket.on('completed', (e: Record<string, string>) => {
-      setClickEnabled(true)
+      // setClickEnabled(true)
       console.log('completed', e)
 
       if (e.from !== socket.id) {
@@ -137,7 +137,7 @@ function App() {
 
     socket.on('init', (e: Record<string, string>) => {
       if (e.solved) return solve()
-      setClickEnabled(true)
+      // setClickEnabled(true)
       console.log('init', e)
       if (e) {
         return setAnswers({
@@ -151,7 +151,16 @@ function App() {
     }
   }, [])
 
-  const isSolved = (!clickEnabled || clickDone) && Object.keys(answers).length >= questions.length + 1 // +1 for click
+  const addForClick = clickEnabled ? 1 : 0
+  const isSolved = (!clickEnabled || clickDone) && Object.keys(answers).length >= questions.length + addForClick // +1 for click
+
+  const changeCase = (s: string) => {
+    if (isSolved) {
+      return s
+    }
+    return s.toLowerCase()
+  }
+
   return (
     <Box sx={{ width: '100vw', height: '100vh', overflow: 'scroll' }}>
       <IntoCard />
@@ -160,7 +169,7 @@ function App() {
           <QACard
             key={question}
             question={question}
-            answer={answer}
+            answer={changeCase(answer)}
             initRes={answers[question]}
             onFinish={(a) => {
               setAnswers({
