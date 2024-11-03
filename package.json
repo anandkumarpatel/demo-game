@@ -1,5 +1,5 @@
 {
-  "name": "Demo Game",
+  "name": "game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,8 +27,14 @@
     "deploy": "gh-pages -d build",
     "start": "vite",
     "build": "tsc && vite build",
-    "deploy:server": "npm run build && docker build -t demo:v1 . && npm run deploy:clean; docker run -d -p 4001:4001 --name demo demo:v1",
-    "deploy:clean": "docker kill demo && docker rm demo",
+    "deploy:clean": "npm run docker -- kill ${NAME}; npm run docker -- rm ${NAME} || true",
+    "deploy:clean-images": "npm run ssh -- 'docker rmi $(docker images -f \"dangling=true\" -q)' || true",
+    "deploy:build": "npm run docker -- build -t ${NAME}:v1 .",
+    "deploy:docker": "npm run deploy:build && npm run cleanStart && npm run deploy:clean-images && npm run logs",
+    "cleanStart": "npm run deploy:clean && npm run docker -- run --name ${NAME} --restart=always -p 80:4001 -d ${NAME}:v1",
+    "docker": "docker -H ssh://ubuntu@${SERVER}",
+    "logs": "npm run docker -- logs ${NAME} -f --tail ${LOGS:-10}",
+    "ssh": "ssh ubuntu@${SERVER}",
     "preview": "vite preview"
   },
   "browserslist": {
