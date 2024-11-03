@@ -6,7 +6,7 @@ TODO:
 
 - Add Live Player count
 - Sequence puzzle
-  - Enabled after 4 players join
+  - Enabled after 3 players join
   - Must press colors in order
   - Each player has a single button with one color and text that shows what color is next
 - Scan QR code to solve

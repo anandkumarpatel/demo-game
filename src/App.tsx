@@ -24,6 +24,11 @@ function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [clickDone, setClickDone] = useState(false)
   const [clickEnabled, setClickEnabled] = useState(false)
+  const [currentUsers, setCurrentUsers] = useState({
+    timestamp: 0,
+    currentCount: 1,
+  })
+
   useEffect(() => {
     // const manager = new Manager(`${window.location.hostname}:4001`)
     const manager = new Manager(backendUrl)
@@ -54,7 +59,17 @@ function App() {
         )
       )
     }
-    socket.on('solve', solve)
+
+    socket.on('user:event', ({ currentCount, timestamp }: { currentCount: number; timestamp: number }) => {
+      console.log('user:event', currentCount, timestamp)
+
+      setCurrentUsers((currentUsersState) => {
+        if (currentUsersState.timestamp > timestamp) {
+          return currentUsersState
+        }
+        return { currentCount, timestamp }
+      })
+    })
 
     socket.on('completed', (e: Record<string, string>) => {
       setClickEnabled(true)
@@ -90,7 +105,7 @@ function App() {
   const isSolved = (!clickEnabled || clickDone) && Object.keys(answers).length >= questions.length + 1 // +1 for click
   return (
     <Box sx={{ width: '100vw', height: '100vh', overflow: 'scroll' }}>
-      <IntoCard />
+      <IntoCard playerCount={currentUsers.currentCount} />
       {questions.map(({ question, answer }) => {
         return (
           <QACard
