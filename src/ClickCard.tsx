@@ -6,7 +6,8 @@ type Props = {
   onClick: () => void
 }
 
-const COUNT = 350 * 10 // 350 is how many I click per minute. mult this by people we expect to play
+// const COUNT = 350 * 10 // 350 is how many I click per minute. mult this by people we expect to play
+const COUNT = 2 // 350 is how many I click per minute. mult this by people we expect to play
 const ClickCard: React.FC<Props> = ({ otherCount, onFinish, onClick }) => {
   const [count, setCount] = React.useState(0)
   const c = Math.max(count, otherCount)
