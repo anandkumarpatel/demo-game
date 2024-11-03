@@ -10,12 +10,76 @@ import QACard from './QACard'
 
 let socket: any = null
 const questions = [
-  { question: "What's is Readme.io mascots name?", answer: 'Owlbert' },
-  { question: 'From which city did Owlbert originate?', answer: 'Owlbany' },
-  { question: 'The outlawing of what caused Owlbert to move to Silicon Valley', answer: 'internet' },
-  { question: 'On which pages does Owlbert spend his days jumping?', answer: 'ReadMe' },
-  { question: 'What does the W stand for in Owlberts role as CWO stand for?', answer: 'Whimsy' },
+  {
+    question: "What is JD's favorite cocktail?",
+    answer: 'oLd fashioned',
+  },
+  {
+    question: 'What city was JD born in? (Hint: You have to spell the full city name)',
+    answer: 'fort walton bEach',
+  },
+  {
+    question: "What is JD's favorite sport to play?",
+    answer: 'Golf',
+  },
+  {
+    question: 'Where did JD propose?',
+    answer: 'st. Augustine',
+  },
+  {
+    question: "What is JD's favorite non-Indian meal from his mom?",
+    answer: 'enchiLadas',
+  },
+  {
+    question: "What was JD's favorite subject in school as a kid?",
+    answer: 'Math',
+  },
+  {
+    question: "What is JD's favorite movie series? (Hint: There are 4 movies in the series with 2 of them being released within the last 4 years)",
+    answer: 'bAd boys',
+  },
+  {
+    question: 'What food item does JD absolutely hate?',
+    answer: 'peanut butteR',
+  },
+  {
+    question: "What is JD's favorite dessert flavor?",
+    answer: 'oReo',
+  },
+  {
+    question: 'What city did JD live in as a teenager?',
+    answer: 'destIn',
+  },
+  {
+    question: 'Besides family, which friend has known JD the longest?',
+    answer: 'surAj',
+  },
+  {
+    question: "What country was JD's brother born in?",
+    answer: 'enGland',
+  },
+  {
+    question: "What is JD's all-time favorite TV show? (Hint: Go find Jay Bhula)",
+    answer: 'burn noticE',
+  },
+  {
+    question: 'What does the “D” stand for in “JD”?',
+    answer: 'Dilan',
+  },
+  {
+    question: 'What type of law does JD primarily practice?',
+    answer: 'personAl injury',
+  },
+  {
+    question: 'What law school did JD go to?',
+    answer: 'steTson',
+  },
+  {
+    question: "Who is JD's favorite all-time basketball player?",
+    answer: 'kobE bryant',
+  },
 ]
+
 const isLocal = window.location.hostname.includes('localhost')
 const port = isLocal ? '4001' : '443'
 const backendUrl = `${window.location.protocol}//${window.location.hostname}:${port}`
